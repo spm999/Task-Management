@@ -26,7 +26,7 @@ const TaskComponent = () => {
     // Fetch all tasks from the backend
     const fetchTasks = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/tasks');
+            const response = await axios.get('https://task-management-manm.onrender.com/tasks');
             setTasks(response.data);
         } catch (error) {
             console.error('Error fetching tasks:', error);
@@ -41,7 +41,7 @@ const TaskComponent = () => {
             return; // Exit the function if any field is empty
         }
         try {
-            await axios.post('http://localhost:3000/tasks', newTask);
+            await axios.post('https://task-management-manm.onrender.com/tasks', newTask);
             // Clear input fields after successful creation
             setNewTask({
                 title: '',
@@ -59,7 +59,7 @@ const TaskComponent = () => {
     // Delete a task
     const deleteTask = async (taskId) => {
         try {
-            await axios.delete(`http://localhost:3000/tasks/${taskId}`);
+            await axios.delete(`https://task-management-manm.onrender.com/tasks/${taskId}`);
             // Refresh tasks list
             fetchTasks();
         } catch (error) {
@@ -90,7 +90,7 @@ const TaskComponent = () => {
     // Save edited task
     const saveEdit = async () => {
         try {
-            await axios.put(`http://localhost:3000/tasks/${editTaskData.taskId}`, editTask);
+            await axios.put(`https://task-management-manm.onrender.com/tasks/${editTaskData.taskId}`, editTask);
             // Refresh tasks list
             fetchTasks();
             setEditMode(false); // Exit edit mode
